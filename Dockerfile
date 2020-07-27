@@ -2,7 +2,7 @@
 FROM centos/tools:latest
 MAINTAINER marcos.1982@me.com
 
-LABEL RUN docker run -itd --privileged --name NAME -e NAME=NAME IMAGE=IMAGE IMAGE
+LABEL RUN docker run -itd --privileged --cap-add=AL --name NAME -e NAME=NAME IMAGE=IMAGE IMAGE
 
 #LABEL RUN docker run -itd --privileged -v /mnt/huge_c0/:/dev/hugepages/ --name NAME -e NAME=NAME IMAGE=IMAGE IMAGE
 #LABEL RUN docker run -it --privileged -v /sys/bus/pci/drivers:/sys/bus/pci/drivers -v /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages -v /sys/devices/system/node:/sys/devices/system/node -v /dev:/dev --name NAME -e NAME=NAME -e IMAGE=IMAGE IMAGE
@@ -13,7 +13,7 @@ LABEL RUN docker run -itd --privileged --name NAME -e NAME=NAME IMAGE=IMAGE IMAG
 RUN yum install -y kernel-devel
 RUN yum group install -y "Development tools"
 RUN yum -y upgrade
-RUN reboot
+#RUN reboot
 
 CMD ["/usr/bin/bash"]
 
